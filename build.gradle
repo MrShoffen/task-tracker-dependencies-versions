@@ -16,7 +16,7 @@ publishing {
             from components.versionCatalog
             groupId = 'org.mrshoffen.tasktracker'
             artifactId = 'libs-version-catalog'
-            version = '1.0.0'
+            version = '1.0.1'
         }
     }
     repositories {

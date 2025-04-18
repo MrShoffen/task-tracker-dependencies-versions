@@ -4,6 +4,9 @@ springCloud = "2024.0.1"
 springBoot = "3.4.4"
 springDependencyManagement = "1.1.7"
 
+
+
+
 taskTrackerCommons = "1.0.0"
 mapstruct = "1.6.3"
 jjwt = "0.12.6"
@@ -15,11 +18,9 @@ feignMicrometer = "13.6"
 h2 = "2.3.232"
 
 [libraries]
-spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
+#Spring cloud dependencies
+spring-cloud-dependencies = { module = "org.springframework.cloud:spring-cloud-dependencies", version.ref = "springCloud" }
 
-
-
-#task-tracker-commons = { module = "com.github.MrShoffen:task-tracker-commons", version.ref = "taskTrackerCommons" }
 
 [plugins]
 spring-boot = { id = "org.springframework.boot", version.ref = "springBoot" }
