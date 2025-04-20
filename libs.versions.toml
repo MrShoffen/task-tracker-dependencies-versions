@@ -19,7 +19,7 @@ h2 = "2.3.232"
 
 [libraries]
 #Spring cloud dependencies
-spring-cloud-dependencies = { module = "org.springframework.cloud:spring-cloud-dependencies", version.ref = "springCloud" }
+spring-cloud-dependencies = { module = "org.springframework.cloud:spring-cloud-dependencies:2024.0.1", version.ref = "springCloud" }
 
 
 [plugins]

@@ -1,32 +1,18 @@
 plugins {
-    id 'version-catalog'
+    id 'java-platform'
     id 'maven-publish'
 }
 
-catalog {
-    versionCatalog {
-        from(files("libs.versions.toml"))
-    }
+javaPlatform {
+    allowDependencies()
 }
+dependencies {
 
+    api platform('org.springframework.boot:spring-boot-dependencies:3.4.4')
+    api platform('"org.springframework.cloud:spring-cloud-dependencies:2024.0.1"')
 
-publishing {
-    publications {
-        catalog(MavenPublication) {
-            from components.versionCatalog
-            groupId = 'org.mrshoffen.tasktracker'
-            artifactId = 'libs-version-catalog'
-            version = '1.0.1'
-        }
-    }
-    repositories {
-        maven {
-            url = "https://maven.pkg.github.com/MrShoffen/task-tracker-dependencies-versions"
-
-            credentials {
-                username = System.getenv("GITHUB_USERNAME")
-                password = System.getenv("GITHUB_KEY")
-            }
-        }
+    // 2. Добавляем свои библиотеки с версиями
+    constraints {
+        api 'org.projectlombok:lombok:1.18.38'         // Переопределяем версию из Spring BOM (если нужно)
     }
 }
