@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.github.MrShoffen'
-version = '1.2.0'
+version = '1.2.1'
 
 
 javaPlatform {
@@ -15,7 +15,9 @@ dependencies {
     api platform('org.springframework.cloud:spring-cloud-dependencies:2024.0.1')
 
     constraints {
-        api 'org.projectlombok:lombok:1.18.38'         // Переопределяем версию из Spring BOM (если нужно)
+        api 'org.projectlombok:lombok:1.18.38'
+        api 'org.mapstruct:mapstruct:1.6.3'
+        api 'org.mapstruct:mapstruct-processor:1.6.3'
     }
 }
 
