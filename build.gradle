@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.github.MrShoffen'
-version = '1.2.2'
+version = '1.2.3'
 
 
 javaPlatform {
@@ -16,9 +16,9 @@ dependencies {
 
     constraints {
         api 'org.projectlombok:lombok:1.18.38'
-        runtime 'org.projectlombok:lombok:1.18.38'
+        add("annotationProcessor", 'org.projectlombok:lombok:1.18.38')
+        add("annotationProcessor", 'org.mapstruct:mapstruct-processor:1.6.3')
         api 'org.mapstruct:mapstruct:1.6.3'
-        runtime 'org.mapstruct:mapstruct-processor:1.6.3'
     }
 }
 
