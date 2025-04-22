@@ -9,6 +9,7 @@ version = '1.3.2'
 javaPlatform {
     allowDependencies()
 }
+
 dependencies {
     api platform('org.springframework.boot:spring-boot-dependencies:3.4.4')
     api platform('org.springframework.cloud:spring-cloud-dependencies:2024.0.1')
