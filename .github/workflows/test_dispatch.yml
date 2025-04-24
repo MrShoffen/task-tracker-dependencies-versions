@@ -1,0 +1,51 @@
+name: Notify Main Repository
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract version from build.gradle
+        id: extract-version
+        run: |
+          VERSION=$(grep "version =" build.gradle | cut -d "'" -f 2)
+          echo "Extracted version: $VERSION"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create Git tag
+        if: steps.extract-version.outputs.version != ''
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git tag -a "${{ steps.extract-version.outputs.version }}" -m "Release ${{ steps.extract-version.outputs.version }}"
+          git push origin "${{ steps.extract-version.outputs.version }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Send Event
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PAT_WORKFLOW }}  # PAT с правами `repo`
+          repository: MrShoffen/task-tracker  # Куда отправляем
+          event-type: update_submodule   # Тип события (может быть любым)
+          client-payload: '{
+                   "version": "${{ steps.extract-version.outputs.version }}",
+                   "commit_hash": "${{ github.sha }}",
+                   "custom_data": {
+                     "author": "${{ github.actor }}",
+                     "repo": "${{ github.repository }}"
+                   }
+                 }'
