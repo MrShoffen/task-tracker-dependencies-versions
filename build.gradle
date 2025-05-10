@@ -15,7 +15,7 @@ dependencies {
     api platform('org.springframework.cloud:spring-cloud-dependencies:2024.0.1')
 
     constraints {
-        api 'com.github.MrShoffen:task-tracker-commons:1.7.3'
+        api 'com.github.MrShoffen:task-tracker-commons:1.7.4'
 
         api 'org.projectlombok:lombok:1.18.38'
         runtime 'org.projectlombok:lombok:1.18.38'
