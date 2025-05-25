@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.github.MrShoffen'
-version = '2.2.2'
+version = '2.2.3'
 
 javaPlatform {
     allowDependencies()
@@ -15,7 +15,7 @@ dependencies {
     api platform('org.springframework.cloud:spring-cloud-dependencies:2024.0.1')
 
     constraints {
-        api 'com.github.MrShoffen:task-tracker-commons:2.0.1'
+        api 'com.github.MrShoffen:task-tracker-commons:2.1.0'
 
         api 'org.projectlombok:lombok:1.18.38'
         runtime 'org.projectlombok:lombok:1.18.38'
